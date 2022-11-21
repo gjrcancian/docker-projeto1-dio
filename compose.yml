@@ -1,9 +1,18 @@
-version: '3.9'
+version: "3.7"
+
 services:
-  apache:
-    image: httpd:latest
-    container_name: my-apache-app
+  web:
+    image: webdevops/php-apache:alpine-php7
     ports:
-    - '80:80'
+      - "4500:80"
     volumes:
-    - ./website:/usr/local/apache2/htdocs
+      - /www/:/app
+
+    networks:
+      - minha-rede
+
+
+
+networks:
+   minha-rede:
+     driver: bridge
